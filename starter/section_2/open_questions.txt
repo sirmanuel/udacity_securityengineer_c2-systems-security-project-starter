@@ -12,8 +12,21 @@ If I execte a command with the "sudo" I have to use the password of the current 
 E.g. "sudo mkdir test" creates a folder with rights for the user "root" and group "root".
 I don't know what to do for the instruction: Once the configuration change has been made, change your root password to further ensure that the attackers won't be able to use sudo to elevate their privilege to root.
 
+Answer:
+In the project environment the malicious process is running using root account so the instructions were, if we change the root password and also delete the process. Then people should not able able to create new process using root account.
+Now regarding the sudo user, yes even if we change the root password, people can use the "sudo" using current user to run the process as root, for this we need to remove that user from sudoers list.
+
+
 General Questions:
 How can I find out how the backdoor process (remotesec) starts automatically after restarting the computer?
 How to search for the start command that is automatically executed on a reboot?
 Info: After a restart of the system the process remotesec ist always running by root user.
 The Process remotesec  is not listed at the running services (command line: service --status-all)
+
+Answer:
+This comes under "forensic investigation" to find out how the attack is persisted. We need to look for
+
+cron jobs
+bash/zsh profile file (runs on bootup)
+bash/zsh rc file (runs on new shell)
+This although is not part of this project as it requires more investigation and that scope is not covered in the project and this ND course.
