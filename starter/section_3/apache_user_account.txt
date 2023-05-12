@@ -41,8 +41,3 @@ export APACHE_RUN_GROUP=apache-group
 
 
 
-Hello Reviewer, I have plenty of problems with this Task.
-What is the goal of this Task. Only to change the richgts for the file /usr/sbin/apache2?
-What is the expected solution?
-
-

@@ -2,8 +2,8 @@ Questions for "Threat Mitigation"
 
 Criteria:
 Apply security best practices to secure remote login services on the system.
-
-Question1:
+Task: Once the configuration change has been made, change your root password to further ensure that the attackers won't be able to use sudo to elevate their privilege to root.
+Question:
 How can I change my root passwort?
 I changed it via command "sudo passwd root". 
 To change the user to root via command "su root" I have to enter the new password.
