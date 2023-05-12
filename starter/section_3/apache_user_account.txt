@@ -1,43 +1,26 @@
 # Provide the configuration lines you will update to ensure that Apache launches with group name as "apache-group" and user account as "apache-user".
 
 
-#Configuration lines:
-###############
-add user and group
-#################
-sudo groupadd apache-group
-sudo useradd apache-user
+1) Configurations to create the required user with access restrictions, run the below commands in terminal
+
+sudo useradd -m -d /var/www/html/ apache-user
 sudo passwd apache-user
-sudo usermod -aG apache-group apache-user
-sudo usermod -aG apache-group ubuntu
+sudo groupadd apache-group
+sudo usermod -g apache-group apache-user
 
-#####################
-change apache2 executable
-######################
-sudo netstat -antp
-sudo ps -aux | grep apache2
-ls -l /usr/sbin | grep apache2
-sudo chown root:apache-group /usr/sbin/apache2
-sudo chmod o-x /usr/sbin/apache2
-sudo chmod u-x /usr/sbin/apache2
-ls -l /usr/sbin | grep apache2
-ls -l /etc | grep apache2
-sudo chown -R root:apache-group /etc/apache2/
-sudo chmod -R o-x /etc/apache2/
-ls -l /etc | grep apache2
+sudo chown -R apache-user /var/www/html/*
+sudo chgrp -R nim /var/www/html/*
 
-##########################
-change apache2 start user
-###########################
-sudo nano /etc/apache2/envvars 
+sudo chown -R apache-user /var/lock/apache2
+sudo chgrp -R apache-group /var/lock/apache2
 
------Original content of /etc/apache2/envvars --------
-export APACHE_RUN_USER=www-data
-export APACHE_RUN_GROUP=www-data
------Changed Content -------------
+sudo chown -R apache-user /var/log/apache2
+sudo chgrp -R apache-group /var/log/apache2
+
+sudo chown -R ubuntu:ubuntu /var/www/html/ossec
+sudo chown ubuntu:ubuntu /var/www/html/
+
+2) Configurations to tell Apache2 to use the user. open the /etc/apache2/envvars and edit the following lines :
+
 export APACHE_RUN_USER=apache-user
 export APACHE_RUN_GROUP=apache-group
--------------------------------------
-
-
-
