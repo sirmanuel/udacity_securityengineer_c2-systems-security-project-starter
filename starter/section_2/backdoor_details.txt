@@ -1,12 +1,59 @@
 # Provide the backdoor entries created by the nation state attackers. 
 
 # Rouge Username
-
+darklord (detected in /var/log/auth.log or in ossec web GUI)
 
 # Backdoor process name
+remotesec
 
 
 # Backdoor port number the above process is listening on
+56565 (-> also found in ossec Level: 7 - Listened ports status (netstat) changed (new port opened or closed).)
+
+#################
+console log
+#################
+ubuntu@ubuntu-VirtualBox:/var$ sudo netstat -antp
+Aktive Internetverbindungen (Server und stehende Verbindungen)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      979/mysqld      
+tcp        0      0 127.0.1.1:53            0.0.0.0:*               LISTEN      1128/dnsmasq    
+tcp        0      0 0.0.0.0:56565           0.0.0.0:*               LISTEN      956/remotesec   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      898/sshd        
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      454/cupsd       
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1189/postgres   
+tcp6       0      0 :::80                   :::*                    LISTEN      2366/apache2    
+tcp6       0      0 :::22                   :::*                    LISTEN      898/sshd        
+ubuntu@ubuntu-VirtualBox:/var$ sudo ps -aux | grep remotesec
+root       956  0.0  0.0   2592   316 ?        SN   12:09   0:00 /tmp/remotesec -k -l 56565
+ubuntu    5407  0.0  0.0   6180   832 pts/0    S+   15:14   0:00 grep --color=auto remotesec
+ubuntu@ubuntu-VirtualBox:/var$ sudo ps -p 956
+  PID TTY          TIME CMD
+  956 ?        00:00:00 remotesec
+#########################
+kill  malicious process
+#########################
+ubuntu@ubuntu-VirtualBox:/var$ sudo kill -9 956
+ubuntu@ubuntu-VirtualBox:/var$ sudo netstat -antp
+Aktive Internetverbindungen (Server und stehende Verbindungen)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      979/mysqld      
+tcp        0      0 127.0.1.1:53            0.0.0.0:*               LISTEN      1128/dnsmasq    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      898/sshd        
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      454/cupsd       
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1189/postgres   
+tcp6       0      0 :::80                   :::*                    LISTEN      2366/apache2    
+tcp6       0      0 :::22                   :::*                    LISTEN      898/sshd   
+
+
+#####################
+delete user darklord
+#####################
+ubuntu@ubuntu-VirtualBox:/var$ cat /etc/passwd | grep darklord
+darklord:x:1001:1001:,,,:/home/darklord:/bin/bash
+ubuntu@ubuntu-VirtualBox:/var$ sudo userdel darklord
+ubuntu@ubuntu-VirtualBox:/var$ cat /etc/passwd | grep darklord
+
 
 
 

@@ -1,3 +1,15 @@
 # Provide your IPtables rule to block SSH access to the attacking IP address.
 
+sudo iptables -A INPUT -s 192.168.56.1 -j DROP
 
+##################################
+console log implementig the rule
+##################################
+ubuntu@ubuntu-VirtualBox:/var$ sudo iptables -A INPUT -s 192.168.56.1 -j DROP
+ubuntu@ubuntu-VirtualBox:/var$ sudo iptables -S INPUT
+-P INPUT ACCEPT
+-A INPUT -s 192.168.56.1/32 -j DROP
+ubuntu@ubuntu-VirtualBox:/var$ sudo iptables -L INPUT -v -n
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       all  --  *      *       192.168.56.1         0.0.0.0/0    

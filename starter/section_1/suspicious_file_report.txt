@@ -1,8 +1,29 @@
 # provide the additional filename that you have identified as a potentially suspicious file. Also provide details about the Command and control Domain which is hardcoded inside this file. 
 
 # Filename
+~/Downloads/SSH-One
 
 
 # Callout domain
+hfs_m=http://darkl0rd.com:7758/SSH-T
+hfs_s=http://darkl0rd.com:7758/SSH-One
 
- 
+
+
+##############################
+console log
+unknown_threat.yara -> rule must already exists
+##############################
+ubuntu@ubuntu-VirtualBox:/home/yara_rules$ clamscan -ir -d /home/yara_rules/unknown_threat.yara /home/ubuntu/Downloads/
+/home/ubuntu/Downloads/SSH-One: YARA.unknown_threat.UNOFFICIAL FOUND
+
+----------- SCAN SUMMARY -----------
+Known viruses: 1
+Engine version: 0.100.3
+Scanned directories: 1
+Scanned files: 8
+Infected files: 1
+Data scanned: 2.40 MB
+Data read: 2.40 MB (ratio 1.00:1)
+Time: 0.036 sec (0 m 0 s)
+

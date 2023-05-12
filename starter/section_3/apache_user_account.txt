@@ -2,6 +2,47 @@
 
 
 #Configuration lines:
+###############
+add user and group
+#################
+sudo groupadd apache-group
+sudo useradd apache-user
+sudo passwd apache-user
+sudo usermod -aG apache-group apache-user
+sudo usermod -aG apache-group ubuntu
 
+#####################
+change apache2 executable
+######################
+sudo netstat -antp
+sudo ps -aux | grep apache2
+ls -l /usr/sbin | grep apache2
+sudo chown root:apache-group /usr/sbin/apache2
+sudo chmod o-x /usr/sbin/apache2
+sudo chmod u-x /usr/sbin/apache2
+ls -l /usr/sbin | grep apache2
+ls -l /etc | grep apache2
+sudo chown -R root:apache-group /etc/apache2/
+sudo chmod -R o-x /etc/apache2/
+ls -l /etc | grep apache2
+
+##########################
+change apache2 start user
+###########################
+sudo nano /etc/apache2/envvars 
+
+-----Original content of /etc/apache2/envvars --------
+export APACHE_RUN_USER=www-data
+export APACHE_RUN_GROUP=www-data
+-----Changed Content -------------
+export APACHE_RUN_USER=apache-user
+export APACHE_RUN_GROUP=apache-group
+-------------------------------------
+
+
+
+Hello Reviewer, I have plenty of problems with this Task.
+What is the goal of this Task. Only to change the richgts for the file /usr/sbin/apache2?
+What is the expected solution?
 
 

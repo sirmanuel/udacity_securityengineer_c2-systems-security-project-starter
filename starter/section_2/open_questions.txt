@@ -1,0 +1,19 @@
+Questions for "Threat Mitigation"
+
+Criteria:
+Apply security best practices to secure remote login services on the system.
+
+Question1:
+How can I change my root passwort?
+I changed it via command "sudo passwd root". 
+To change the user to root via command "su root" I have to enter the new password.
+Was that all? I am a bit confused.
+If I execte a command with the "sudo" I have to use the password of the current user "ubuntu".
+E.g. "sudo mkdir test" creates a folder with rights for the user "root" and group "root".
+I don't know what to do for the instruction: Once the configuration change has been made, change your root password to further ensure that the attackers won't be able to use sudo to elevate their privilege to root.
+
+General Questions:
+How can I find out how the backdoor process (remotesec) starts automatically after restarting the computer?
+How to search for the start command that is automatically executed on a reboot?
+Info: After a restart of the system the process remotesec ist always running by root user.
+The Process remotesec  is not listed at the running services (command line: service --status-all)
